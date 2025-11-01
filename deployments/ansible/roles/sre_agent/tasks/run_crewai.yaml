@@ -140,25 +140,25 @@
   tags:
     - sre_agent
 
-- name: Upload metadata to S3 (parent)
-  amazon.aws.s3_object:
-    endpoint_url: "{{ storage.s3.endpoint }}"
-    bucket: "{{ storage.s3.bucket }}"
-    object: "/{{ storage.s3.directory }}/metadata"
-    src: "{{ sre_agent_directory }}/metadata"
-    mode: put
-  tags:
-    - sre_agent
+# - name: Upload metadata to S3 (parent)
+#   amazon.aws.s3_object:
+#     endpoint_url: "{{ storage.s3.endpoint }}"
+#     bucket: "{{ storage.s3.bucket }}"
+#     object: "/{{ storage.s3.directory }}/metadata"
+#     src: "{{ sre_agent_directory }}/metadata"
+#     mode: put
+#   tags:
+#     - sre_agent
 
-- name: Upload metadata to S3 (child)
-  amazon.aws.s3_object:
-    endpoint_url: "{{ storage.s3.endpoint }}"
-    bucket: "{{ storage.s3.bucket }}"
-    object: "/{{ storage.s3.directory }}/metadata"
-    src: "{{ sre_agent_directory }}/metadata"
-    mode: put
-  tags:
-    - sre_agent
+# - name: Upload metadata to S3 (child)
+#   amazon.aws.s3_object:
+#     endpoint_url: "{{ storage.s3.endpoint }}"
+#     bucket: "{{ storage.s3.bucket }}"
+#     object: "/{{ storage.s3.directory }}/metadata"
+#     src: "{{ sre_agent_directory }}/metadata"
+#     mode: put
+#   tags:
+#     - sre_agent
 
 - name: Create temporary file
   ansible.builtin.tempfile:
@@ -183,14 +183,14 @@
   tags:
     - sre_agent
 
-- name: Upload structured-unstructured outputs to S3
-  community.aws.s3_sync:
-    endpoint_url: "{{ storage.s3.endpoint }}"
-    bucket: "{{ storage.s3.bucket }}"
-    file_root: "/runner/outputs"
-    key_prefix: "{{ storage.s3.directory }}/outputs"
-  tags:
-    - sre_agent
+# - name: Upload structured-unstructured outputs to S3
+#   community.aws.s3_sync:
+#     endpoint_url: "{{ storage.s3.endpoint }}"
+#     bucket: "{{ storage.s3.bucket }}"
+#     file_root: "/runner/outputs"
+#     key_prefix: "{{ storage.s3.directory }}/outputs"
+#   tags:
+#     - sre_agent
 
 - name: Remove the temporary file
   ansible.builtin.file:
