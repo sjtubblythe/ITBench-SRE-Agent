@@ -109,6 +109,7 @@ def run():
     if kubectl_otel_astronomy_shop[1] != 0 and kubectl_dsb_hotel_researvation[1] !=0:
         raise Exception("KUBECONFIG is not configured correctly.")
 
+    time.sleep(3600)
     while True:
         alerts = GetAlertsCustomTool()._run()
         if alerts is not None and len(alerts) > 0:
